@@ -16,7 +16,7 @@ class CategoryController extends Controller
     //     $this->middleware('role:super');
     // }
 
-    //categories
+    //categories index
 
     public function index()
     {

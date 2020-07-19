@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header bg-success">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -43,13 +43,15 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('Login') }}
                                 </button>
                                 <br>
                                 <p>
-                                    If you don't have account yet, register
-                                    <a href="{{url('/register')}}">here</a>
+                                    If you don't have account yet,  <br>
+
+                                    Register <a href="{{url('/register')}}">here</a> for Company <br>
+                                    Register <a href="{{url('/employee/register_form')}}">here</a> for Employee
                                 </p>
                             </div>
                         </div>

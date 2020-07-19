@@ -5,14 +5,14 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
-          	
-            <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">About</span></h1>
-          </div>  
-        </div> 
-        </div>   
 
-        
-  
+            <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">About</span></h1>
+          </div>
+        </div>
+        </div>
+
+
+
 <section class="ftco-about d-md-flex">
     	<div class="one-half img" style="background-image: url(client/images/about.jpg);"></div>
     	<div class="one-half ftco-animate">
@@ -154,7 +154,7 @@
         </div>
     	</div>
     </section>
-		
+
 		<section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
         <div class="container">

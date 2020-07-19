@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $categories=App\Category::all();
-    $jobs=App\Job::all();
-    return view('client.index',compact('categories','jobs'));
+    $categories = App\Category::all();
+    $jobsCount= App\Job::all()->count();
+    $jobs= App\Job::paginate(5);
+    return view('client.index',compact('categories','jobs','jobsCount'));
 });
 
 
@@ -50,7 +51,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Admin
 Route::prefix('admin')->group(function () {
-   
+
     Route::resource('/company','Admin\CompanyController');
     Route::resource('/category','Admin\CategoryController');
     Route::resource('/job','Admin\JobController');
@@ -58,7 +59,10 @@ Route::prefix('admin')->group(function () {
     Route::resource('/type','Admin\TypeController');
     Route::resource('/location','Admin\LocationController');
     Route::resource('/experience_level','Admin\Experience_levelController');
-    //Bitfumes
+
+
+
+    // =========== Bitfumes =========== the following routes aren't used anymore
     Route::GET('/', 'Admin\LoginController@login');
     Route::GET('/home', 'Admin\AdminController@index')->name('admin.home');
     // Login and Logout
@@ -102,9 +106,9 @@ Route::prefix('admin')->group(function () {
     Route::delete('activation/{admin}', 'Admin\ActivationController@deactivate');
     Route::resource('permission', 'Admin\PermissionController');
 
-   
 
-   
+
+
 });
 
 

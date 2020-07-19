@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class CV extends Model
 {
-  protected $guarded=[];  
+  protected $guarded=[];
 }

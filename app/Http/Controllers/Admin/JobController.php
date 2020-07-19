@@ -10,6 +10,10 @@ use App\Type;
 
 class JobController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        
+
         $jobs= Job::all();
         return view('admins.jobs.index',compact('jobs'));
     }
@@ -84,7 +88,7 @@ class JobController extends Controller
          $job=Job::findorfail($id);
         $job->update($request->all());
         return redirect('/admin/job');
-        
+
     }
 
     /**

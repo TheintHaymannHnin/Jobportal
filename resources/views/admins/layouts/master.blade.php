@@ -55,71 +55,11 @@
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <ul class="nav navbar-nav d-md-down-none">
-
-      </ul>
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item dropdown d-md-down-none">
-          <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="icon-bell"></i>
-            <span class="badge badge-pill badge-danger">5</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
-            <div class="dropdown-header text-center">
-              <strong>You have 5 notifications</strong>
-            </div>
-            <a class="dropdown-item" href="#">
-              <i class="icon-user-follow text-success"></i> New user registered</a>
-            <a class="dropdown-item" href="#">
-              <i class="icon-user-unfollow text-danger"></i> User deleted</a>
-            <a class="dropdown-item" href="#">
-              <i class="icon-chart text-info"></i> Sales report is ready</a>
-            <a class="dropdown-item" href="#">
-              <i class="icon-basket-loaded text-primary"></i> New client</a>
-            <a class="dropdown-item" href="#">
-              <i class="icon-speedometer text-warning"></i> Server overloaded</a>
-            <div class="dropdown-header text-center">
-              <strong>Server</strong>
-            </div>
-            <a class="dropdown-item" href="#">
-              <div class="text-uppercase mb-1">
-                <small>
-                  <b>CPU Usage</b>
-                </small>
-              </div>
-              <span class="progress progress-xs">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </span>
-              <small class="text-muted">348 Processes. 1/4 Cores.</small>
-            </a>
-            <a class="dropdown-item" href="#">
-              <div class="text-uppercase mb-1">
-                <small>
-                  <b>Memory Usage</b>
-                </small>
-              </div>
-              <span class="progress progress-xs">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </span>
-              <small class="text-muted">11444GB/16384MB</small>
-            </a>
-            <a class="dropdown-item" href="#">
-              <div class="text-uppercase mb-1">
-                <small>
-                  <b>SSD 1 Usage</b>
-                </small>
-              </div>
-              <span class="progress progress-xs">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </span>
-              <small class="text-muted">243GB/256GB</small>
-            </a>
-          </div>
-        </li>
 
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-               
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -136,10 +76,24 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest('admin')
+                        @if(Auth::check())
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.login')}}">{{ ucfirst(config('multiauth.prefix'))
-                                }} Login</a>
+                            <a class="nav-link">
+                                {{ Auth::user()->name }}
+                            </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button style="border: none; background-color:white" onclick="return confirm('Are you sure you want to logout?')">
+                                        Logout
+                                    </button>
+                                </form>
+                            </a>
+                        </li>
+                        @endif
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -179,19 +133,23 @@
         <nav class="sidebar-nav">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('admin/home') }}">
+              <a class="nav-link" href="">
                 <i class="nav-icon icon-speedometer"></i> Dashboard
-                <span class="badge badge-info">NEW</span>
               </a>
             </li>
 
-
-
-            
               <li class="nav-item">
                   <a class="nav-link" href="{{ url('/admin/category') }}">
                     <i class="nav-icon icon-list"></i> Category</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/admin/type') }}">
+                      <i class="nav-icon icon-list"></i> Type</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/admin/location') }}">
+                      <i class="nav-icon icon-list"></i> Location</a>
+                  </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('/admin/company') }}">
                     <i class="nav-icon icon-list"></i> Company</a>
@@ -200,23 +158,15 @@
                   <a class="nav-link" href="{{ url('/admin/job') }}">
                     <i class="nav-icon icon-list"></i> Job</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url('/admin/cv') }}">
-                    <i class="nav-icon icon-list"></i> CV</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url('/admin/type') }}">
-                    <i class="nav-icon icon-list"></i> Type</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url('/admin/location') }}">
-                    <i class="nav-icon icon-list"></i> Location</a>
-                </li>
-             
+
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('/admin/experience_level') }}">
                     <i class="nav-icon icon-list"></i> Experience_level</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/admin/cv') }}">
+                      <i class="nav-icon icon-list"></i> CV</a>
+                  </li>
             </li>
 
             </li>
@@ -231,17 +181,17 @@
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
                           <li class="breadcrumb-item">Admin</li>
-                          
+
                           <li class="breadcrumb-item active">@yield('title')</li>
                           <!-- Breadcrumb Menu-->
-                          
+
                         </ol>
 
         @yield('content')
       </main>
 
     </div>
-    
+
     <script src="{{ asset('adminpaneldesign/vendors/jquery/js/jquery.min.js') }}"></script>
     <script src="{{ asset('adminpaneldesign/vendors/popper.js/js/popper.min.js') }}"></script>
     <script src="{{ asset('adminpaneldesign/vendors/bootstrap/js/bootstrap.min.js') }}"></script>

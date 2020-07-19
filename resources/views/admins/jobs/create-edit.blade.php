@@ -41,7 +41,11 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="position">Position</label>
-                                    <input class="form-control @error('position') is-invalid @enderror" name="position" id="position" type="text" placeholder="Enter Job Position" value="{{ old('position')  ??  $job->position ?? '' }}" required>
+                                    <select name="position" id="" class="form-control">
+                                        <option value="">Select Postion</option>
+                                        <option value="Junior">Junior</option>
+                                        <option value="Senior">Senior</option>
+                                    </select>
                                     @error('position')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $position}}</strong>
@@ -60,11 +64,11 @@
                                     @enderror
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label class="col-form-label" for="requirement">Requirement</label><br>
-                                    <textarea class="form-control @error('requirement') is-invalid @enderror" name="requirement" id="requirement" value="{{ old('requirement')  ??  $job->requirement ?? '' }}" required></textarea>
+                                    <textarea class="form-control @error('requirement') is-invalid @enderror" name="requirement" id="requirement" value="{{ old('requirement')  ??  $job->requirement ?? '' }}" required placeholder="Enter requirements"></textarea>
                                     @error('requirement')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $requirement }}</strong>
@@ -76,7 +80,7 @@
                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label class="col-form-label" for="description">Description</label><br>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" value="{{ old('description')  ??  $job->description ?? '' }}" required></textarea>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" value="{{ old('description')  ??  $job->description ?? '' }}" required placeholder="Enter Description"></textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $description }}</strong>
@@ -87,13 +91,13 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="category_id">Category Name</label>
-                                       
+
                                     <select name="category_id" id="category_id" class="form-control">
                                         @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
-               
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -117,7 +121,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                              </div>
                     </div>
 

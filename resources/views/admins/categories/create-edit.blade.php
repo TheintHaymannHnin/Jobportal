@@ -39,18 +39,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="col-form-label" for="description">Description</label><br>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" required>{{ old('description')  ??  $category->description ?? '' }}</textarea>
-                                    @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $description }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
                         </div>
                     </div>
 

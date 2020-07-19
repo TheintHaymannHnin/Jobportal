@@ -3,26 +3,24 @@
 <a href="{{ url('admin/category') }}" class="title-color">Category</a>
 @endsection
 @section('content')
-<div class="card-body">
-
-    <div class="card">
-        <div class="card-header">
-            <a href="{{ url('/admin/category/create')}}"><button class="btn btn-success float-right">+</button></a>
-        </div>
-        <div class="table-responsive">
-        <table class="table  table-bordered">
+<div class="card">
+    <div class="card-header">
+        <a href="{{ url('/admin/category/create')}}"><button class="btn btn-success float-right">+</button></a>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Name</th>
-                    <th>Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($categories as $category)
+                @foreach($categories as $key => $category)
                 <tr>
+                    <td>{{$key + $categories->firstItem()}}</td>
                     <td>{{ $category->name }}</td>
-                    <td>{{ $category->description }}</td>
                     <td>
                     <form action="{{ url('/admin/category/'.$category->id) }}" method="POST">
                         @csrf
@@ -38,6 +36,8 @@
             </tbody>
         </table>
     </div>
+    <div class="card-footer">
+        {{ $categories->links() }}
     </div>
 </div>
 

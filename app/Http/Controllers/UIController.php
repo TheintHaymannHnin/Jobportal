@@ -21,7 +21,7 @@ class UIController extends Controller
 
     public function cvForm(){
         if(Auth::check()){
-            return "you are in cv form";
+            return view('cv');
         }else{
             return redirect('/login');
         }

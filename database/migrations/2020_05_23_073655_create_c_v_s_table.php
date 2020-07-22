@@ -31,7 +31,7 @@ class CreateCVSTable extends Migration
             $table->string('total_experience');
             $table->string('education_university');
             $table->string('education_level');
-            $table->string('edicstion_major');
+            $table->string('edication_major');
             $table->string('past_experience_1_title')->nullable();
             $table->string('past_experience_1_company')->nullable();
             $table->string('past_experience_1_duration')->nullable();

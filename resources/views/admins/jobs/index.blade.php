@@ -3,12 +3,11 @@
 <a href="{{ url('admin/job') }}" class="title-color">Job</a>
 @endsection
 @section('content')
-<div class="card-body">
-
-    <div class="card">
-        <div class="card-header">
-            <a href="{{ url('/admin/job/create')}}"><button class="btn btn-success float-right">+</button></a>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <a href="{{ url('/admin/job/create')}}"><button class="btn btn-success float-right">+</button></a>
+    </div>
+    <div class="card-body">
         <div class="table-responsive">
         <table class="table  table-bordered">
             <thead>
@@ -22,6 +21,7 @@
                     <th>Requirement</th>
                     <th>Description</th>
                     <th>Action</th>
+                    <th>CV Forms</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,11 +45,24 @@
                         <button class="btn btn-danger btn-sm mb-1" onclick="myFunction()"><i class="fa fa-trash"></i></button>
                     </form>
                     </td>
+                    <td>
+                        <a href="{{url('admin/job/'.$job->id.'/request_cvs')}}" class="btn btn-primary btn-sm mb-1">
+                            Request <span class="badge badge-secondary">3</span>
+                         </a>
+                        <a href="" class="btn btn-success btn-sm mb-1">
+                            Accepted <span class="badge badge-secondary">3</span>
+                         </a>
+                        <a href="" class="btn btn-danger btn-sm">
+                            Rejected <span class="badge badge-secondary">3</span>
+                         </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    </div>
+    <div class="card-footer">
     </div>
 </div>
 

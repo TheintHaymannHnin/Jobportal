@@ -6,11 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\CV' => $baseDir . '/app/CV.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Company' => $baseDir . '/app/Company.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Cv' => $baseDir . '/app/Cv.php',
+    'App\\Education' => $baseDir . '/app/Education.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Experience' => $baseDir . '/app/Experience.php',
     'App\\Experience_level' => $baseDir . '/app/Experience_level.php',
     'App\\Http\\Controllers\\Admin\\ActivationController' => $baseDir . '/app/Http/Controllers/Admin/ActivationController.php',
     'App\\Http\\Controllers\\Admin\\AdminController' => $baseDir . '/app/Http/Controllers/Admin/AdminController.php',
@@ -60,6 +62,7 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\Skill' => $baseDir . '/app/Skill.php',
     'App\\Traits\\hasPermissions' => $baseDir . '/app/Traits/hasPermissions.php',
     'App\\Type' => $baseDir . '/app/Type.php',
     'App\\User' => $baseDir . '/app/User.php',
@@ -3671,6 +3674,8 @@ return array(
     'SebastianBergmann\\Type\\VoidType' => $vendorDir . '/sebastian/type/src/VoidType.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'SessionUpdateTimestampHandlerInterface' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
+    'Socieboy\\Alerts\\AlertServiceProvider' => $vendorDir . '/socieboy/alerts/src/AlertServiceProvider.php',
+    'Socieboy\\Alerts\\Flash' => $vendorDir . '/socieboy/alerts/src/Flash.php',
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Symfony\\Component\\Console\\Application' => $vendorDir . '/symfony/console/Application.php',
     'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => $vendorDir . '/symfony/console/CommandLoader/CommandLoaderInterface.php',

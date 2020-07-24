@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Job;
-use App\Category;
-use App\Company;
-use App\Type;
+use App\{Job,Category,Company,Cv,Type};
 
 class JobController extends Controller
 {
@@ -23,6 +20,7 @@ class JobController extends Controller
     {
 
         $jobs= Job::all();
+
         return view('admins.jobs.index',compact('jobs'));
     }
 
@@ -102,5 +100,12 @@ class JobController extends Controller
         $job=Job::findorfail($id);
         $job->delete();
         return redirect('/admin/job');
+    }
+
+    // ============ CV Forms ====================
+
+    public function requestCVs($jobId){
+        $cvs = Cv::where('job_id',$jobId)->get();
+        return view('admins.jobs.cvs.request',compact('cvs'));
     }
 }

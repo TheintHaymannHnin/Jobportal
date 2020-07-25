@@ -87,6 +87,7 @@ class ComposerStaticInit0435f6fb5251a910f4a41ebc0c943dda
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Socieboy\\Alerts\\' => 16,
         ),
         'R' => 
         array (
@@ -308,6 +309,10 @@ class ComposerStaticInit0435f6fb5251a910f4a41ebc0c943dda
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Socieboy\\Alerts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/socieboy/alerts/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -496,11 +501,13 @@ class ComposerStaticInit0435f6fb5251a910f4a41ebc0c943dda
     );
 
     public static $classMap = array (
-        'App\\CV' => __DIR__ . '/../..' . '/app/CV.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Company' => __DIR__ . '/../..' . '/app/Company.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Cv' => __DIR__ . '/../..' . '/app/Cv.php',
+        'App\\Education' => __DIR__ . '/../..' . '/app/Education.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Experience' => __DIR__ . '/../..' . '/app/Experience.php',
         'App\\Experience_level' => __DIR__ . '/../..' . '/app/Experience_level.php',
         'App\\Http\\Controllers\\Admin\\ActivationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ActivationController.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
@@ -550,6 +557,7 @@ class ComposerStaticInit0435f6fb5251a910f4a41ebc0c943dda
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Skill' => __DIR__ . '/../..' . '/app/Skill.php',
         'App\\Traits\\hasPermissions' => __DIR__ . '/../..' . '/app/Traits/hasPermissions.php',
         'App\\Type' => __DIR__ . '/../..' . '/app/Type.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
@@ -4161,6 +4169,8 @@ class ComposerStaticInit0435f6fb5251a910f4a41ebc0c943dda
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
+        'Socieboy\\Alerts\\AlertServiceProvider' => __DIR__ . '/..' . '/socieboy/alerts/src/AlertServiceProvider.php',
+        'Socieboy\\Alerts\\Flash' => __DIR__ . '/..' . '/socieboy/alerts/src/Flash.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',

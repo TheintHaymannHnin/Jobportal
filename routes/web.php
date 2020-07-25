@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','UIController@index');
 Route::get('/about','UIController@about');
-Route::get('/cv_form','UIController@cvForm');
+Route::get('/cv_form/{jobId}','UIController@cvForm');
+Route::post('/cv_form/store','UIController@storeCvForm');
 
 
 
@@ -32,7 +33,13 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/company','Admin\CompanyController');
     Route::resource('/category','Admin\CategoryController');
+
     Route::resource('/job','Admin\JobController');
+
+    Route::get('/job/{jobId}/request_cvs','Admin\JobController@requestCVs');
+
+
+
     Route::resource('/cv','Admin\CVController');
     Route::resource('/type','Admin\TypeController');
     Route::resource('/location','Admin\LocationController');

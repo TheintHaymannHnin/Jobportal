@@ -27,19 +27,30 @@
     <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
     {{-- FONT AWESOME  --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert.css')}}">
+
+    <style type="text/css">
+        label {
+          color: black;
+        }
+    </style>
+
   </head>
   <body>
 
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="{{url('/')}}">JobPortal</a>
+	      <a class="navbar-brand" href="{{url('/')}}" style="color: blue">
+          JobPortal
+        </a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="{{url('about')}}" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="{{url('about')}}" class="nav-link" style="color: blue">About</a></li>
               <li class="nav-item cta mr-md-2"><a href="{{url('/admin/job')}}" class="nav-link">Post a Job</a></li>
 
             @if(Auth::check())
@@ -66,8 +77,6 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-
-
 
 
     @yield('index')
@@ -159,6 +168,10 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{{asset('client/js/google-map.js')}}"></script>
   <script src="{{asset('client/js/main.js')}}"></script>
+
+  <script src="{{asset('js/sweetalert.js')}}"></script>
+  @include('Alerts::show')
+
   @yield('script')
 
   </body>

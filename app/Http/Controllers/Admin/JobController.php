@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\{Job,Category,Company,Cv,Type};
+use App\Exports\JobsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JobController extends Controller
 {
@@ -100,6 +102,12 @@ class JobController extends Controller
         $job=Job::findorfail($id);
         $job->delete();
         return redirect('/admin/job');
+    }
+
+    // excel download
+    public function downloadJobExcelSheet(){
+        $date = date('d-M-Y');
+      return Excel::download(new JobsExport,$date.'_'.'job.xlsx');
     }
 
     // ============ CV Forms ====================

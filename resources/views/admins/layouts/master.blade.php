@@ -150,23 +150,20 @@
                     <a class="nav-link" href="{{ url('/admin/location') }}">
                       <i class="nav-icon icon-list"></i> Location</a>
                   </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url('/admin/company') }}">
-                    <i class="nav-icon icon-list"></i> Company</a>
-                </li>
+
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('/admin/job') }}">
                     <i class="nav-icon icon-list"></i> Job</a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a class="nav-link" href="{{ url('/admin/experience_level') }}">
                     <i class="nav-icon icon-list"></i> Experience_level</a>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ url('/admin/cv') }}">
                       <i class="nav-icon icon-list"></i> CV</a>
-                  </li>
+                  </li> --}}
             </li>
 
             </li>

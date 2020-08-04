@@ -19,7 +19,7 @@ class JobSeeder extends Seeder
             'requirement' => 'Must be BE-IT, Must speak English fluently',
             'description' => 'This job is very good for everyone',
             'category_id' => 1,
-            'company_id' => 1,
+            'company_id' => 2,
             'type_id' => 1,
         ]);
         Job::create([
@@ -39,7 +39,7 @@ class JobSeeder extends Seeder
             'requirement' => 'Must be BE-IT, Must speak English fluently',
             'description' => 'This job is very good for everyone',
             'category_id' => 3,
-            'company_id' => 3,
+            'company_id' => 2,
             'type_id' => 3,
         ]);
         Job::create([

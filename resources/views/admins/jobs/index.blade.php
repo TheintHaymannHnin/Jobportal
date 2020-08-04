@@ -5,7 +5,12 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a href="{{ url('/admin/job/create')}}"><button class="btn btn-success float-right">+</button></a>
+        <a href="{{url('admin/download_job_excel_sheet')}}" class="btn btn-success" onclick="return confirm('Are you sure you want to download?')">
+           <i class="fa fa-download"></i> Excel Download
+        </a>
+        <a href="{{ url('/admin/job/create')}}">
+            <button class="btn btn-success float-right">+</button>
+        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -28,9 +33,9 @@
                 @foreach($jobs as $job)
                 <tr>
                     <td>{{ $job->name }}</td>
-                    <td>{{ $job->category['name'] }}</td>
-                    <td>{{ $job->company['name'] }}</td>
-                    <td>{{ $job->type['name'] }}</td>
+                    <td>{{ $job->category->name }}</td>
+                    <td>{{ $job->company->name }}</td>
+                    <td>{{ $job->type->name }}</td>
                     <td>{{ $job->position }}</td>
                     <td>{{ $job->salary }}</td>
                     <td>{{ $job->requirement }}</td>
@@ -47,13 +52,13 @@
                     </td>
                     <td>
                         <a href="{{url('admin/job/'.$job->id.'/request_cvs')}}" class="btn btn-primary btn-sm mb-1">
-                            Request <span class="badge badge-secondary">3</span>
+                            Request
                          </a>
                         <a href="" class="btn btn-success btn-sm mb-1">
-                            Accepted <span class="badge badge-secondary">3</span>
+                            Accepted
                          </a>
                         <a href="" class="btn btn-danger btn-sm">
-                            Rejected <span class="badge badge-secondary">3</span>
+                            Rejected
                          </a>
                     </td>
                 </tr>

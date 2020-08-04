@@ -30,16 +30,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Admin
 Route::prefix('admin')->group(function () {
 
-    Route::resource('/company','Admin\CompanyController');
     Route::resource('/category','Admin\CategoryController');
 
     Route::resource('/job','Admin\JobController');
+
+    Route::get('/download_job_excel_sheet','Admin\JobController@downloadJobExcelSheet');
 
     Route::get('/job/{jobId}/request_cvs','Admin\JobController@requestCVs');
 
 
 
     Route::resource('/cv','Admin\CVController');
+
     Route::resource('/type','Admin\TypeController');
     Route::resource('/location','Admin\LocationController');
     Route::resource('/experience_level','Admin\Experience_levelController');

@@ -104,7 +104,7 @@ class JobController extends Controller
         return redirect('/admin/job');
     }
 
-    // excel download
+    // excel download by yemyintsoe
     public function downloadJobExcelSheet(){
         $date = date('d-M-Y');
       return Excel::download(new JobsExport,$date.'_'.'job.xlsx');

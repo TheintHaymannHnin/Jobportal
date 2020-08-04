@@ -19,7 +19,7 @@ Route::post('/cv_form/store','UIController@storeCvForm');
 
 
 
-// AUTH
+// AUTHENTICATION
 Auth::routes();
 Route::get('/employee/register_form','EmployeeRegisterController@registerForm');
 Route::post('/employee/register','EmployeeRegisterController@register');

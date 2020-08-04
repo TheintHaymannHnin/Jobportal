@@ -27,7 +27,6 @@ Route::post('/employee/register','EmployeeRegisterController@register');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 //Admin
 Route::prefix('admin')->group(function () {
 

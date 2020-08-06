@@ -17,6 +17,9 @@ Route::get('/about','UIController@about');
 Route::get('/cv_form/{jobId}','UIController@cvForm');
 Route::post('/cv_form/store','UIController@storeCvForm');
 
+Route::get('/jobs/search','UIController@searchJobs');
+
+
 
 
 // AUTHENTICATION BY YMS

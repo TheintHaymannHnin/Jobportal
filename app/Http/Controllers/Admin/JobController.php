@@ -34,11 +34,9 @@ class JobController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $companies = Company::all();
         $types= Type::all();
 
-
-        return view('admins.jobs.create-edit',compact('categories','companies','types'));
+        return view('admins.jobs.create-edit',compact('categories','types'));
     }
 
     /**
@@ -72,8 +70,11 @@ class JobController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
+        $types= Type::all();
+
         $job=Job::findorfail($id);
-        return view('admins.jobs.create-edit',compact('job'));
+        return view('admins.jobs.create-edit',compact('categories','types','job'));
     }
 
     /**

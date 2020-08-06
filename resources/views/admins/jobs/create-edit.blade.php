@@ -100,18 +100,8 @@
 
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="company_name">Company Name</label>
-                                    <select name="company_id" id="company_id" class="form-control">
-                                        @foreach($companies as $company)
-                                        <option value="{{$company->id}}">{{$company->name}}</option>
-                                        @endforeach
-                                    </select>
-                               </div>
-                            </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="type"> Job Type</label>
                                     <select name="type_id" id="type_id" class="form-control">
@@ -120,6 +110,8 @@
                                         @endforeach
                                     </select>
                                 </div>
+
+                                <input type="hidden" name="company_id" value="{{Auth::user()->id}}">
                             </div>
 
                              </div>

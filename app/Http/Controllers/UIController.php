@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\{Category,Job,Cv,Education,Experience,Skill};
+use App\{Category,Job,Cv,Education,Experience,Skill, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,10 +10,99 @@ class UIController extends Controller
 {
     public function index(){
         $categories = Category::all();
+        $locations = User::where('role','Company')->get();
         $jobsCount= Job::all()->count();
         $jobs= Job::paginate(5);
-        return view('client.index',compact('categories','jobs','jobsCount'));
+        return view('client.index',compact('categories','locations','jobs','jobsCount'));
     }
+
+    // SEARCH JOBS
+    public function searchJobs()
+    {
+        $jobName = request()->name;
+        $categoryId = request()->category_id;
+        $locationId = request()->location_id;
+
+        $categories = Category::all();
+        $locations = User::where('role','Company')->get();
+        $jobsCount= Job::all()->count();
+
+        // dd($jobName, $categoryId, $locationId);
+
+        // WHEN JOB NAME IS EQUAL TO NULL
+        if($jobName == null){
+
+            if($categoryId == null){
+                 $jobs= Job::where('company_id','=',$locationId)
+                ->paginate(5);
+            }
+            if($locationId == null){
+                $jobs= Job::where('category_id','=',$categoryId)
+                ->paginate(5);
+            }
+            if($categoryId != null && $locationId != null){
+                $jobs= Job::where('category_id','=',$categoryId)
+                ->where('company_id','=',$locationId)
+                ->paginate(5);
+            }
+
+        }
+
+        // WHEEN CATEGORY ID IS EQUAL TO NULL
+        if($categoryId == null){
+
+            if($jobName == null){
+                 $jobs= Job::where('company_id','=',$locationId)
+                ->paginate(5);
+            }
+            if($locationId == null){
+                $jobs= Job::where('name','like','%'.$jobName.'%')
+                ->paginate(5);
+            }
+            if($jobName != null && $locationId != null){
+                $jobs= Job::where('name','like','%'.$jobName.'%')
+                ->where('company_id','=',$locationId)
+                ->paginate(5);
+            }
+
+        }
+
+        // WHEEN LOCATION ID IS EQUAL TO NULL
+        if($locationId == null){
+
+            if($jobName == null){
+                 $jobs= Job::where('category_id','=',$categoryId)
+                ->paginate(5);
+            }
+            if($categoryId == null){
+                $jobs= Job::where('name','like','%'.$jobName.'%')
+                ->paginate(5);
+            }
+            if($jobName != null && $categoryId != null){
+                $jobs= Job::where('name','like','%'.$jobName.'%')
+                ->where('category_id','=',$categoryId)
+                ->paginate(5);
+            }
+
+        }
+
+       // WHEN NOTHING IS EQUAL TO NULL
+       if($jobName != null && $categoryId != null && $locationId != null){
+            $jobs= Job::where('name','like','%'.$jobName.'%')
+            ->where('category_id','=',$categoryId)
+            ->where('company_id','=',$locationId)
+            ->paginate(5);
+       }
+
+       // WHEN EVERYTING IS EQUAL TO NULL
+       if($jobName == null && $categoryId == null && $locationId == null){
+           return back();
+       }
+
+
+        return view('client.index',compact('categories','locations','jobs','jobsCount'));
+    }
+
 
     public function about(){
         return view('client.about');
@@ -119,6 +208,8 @@ class UIController extends Controller
         return redirect('/');
 
     }
+
+
 
 
 }

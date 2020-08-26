@@ -2,18 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\{Category,Job,Cv,Education,Experience,Skill, User};
+use App\{Category,Job,Cv,Education,Experience,Skill, User, Jaro};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UIController extends Controller
 {
+    // algo
+    public function searchJobsByAlgo()
+    {
+
+        $results = Job::all();
+
+        if($results->count() > 0){
+
+            foreach($results as $result){
+                $target = request()->job_name;
+                $jaro = new Jaro();
+                $name = $jaro->JaroWinkler($target, $result->name);
+                $data[] = $name;
+            };
+            $realName = array_search(max($data), $data);
+            $jaroData = $results[$realName];
+
+            return $jaroData;
+        }
+    }
+
+
     public function index(){
         $categories = Category::all();
         $locations = User::where('role','Company')->get();
         $jobsCount= Job::all()->count();
         $jobs= Job::paginate(5);
         return view('client.index',compact('categories','locations','jobs','jobsCount'));
+    }
+    public function allJobsIndex(){
+        // $categories = Category::all();
+        // $locations = User::where('role','Company')->get();
+        // $jobsCount= Job::all()->count();
+        $jobs= Job::all();
+        return view('client.all-jobs',compact('jobs'));
     }
 
     // SEARCH JOBS

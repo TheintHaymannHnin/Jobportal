@@ -7,7 +7,8 @@
             <div class="col-md-8">
                 <form action="{{url('/cv_form/store')}}" method="POST">
                 @csrf
-                <input type="text" name="job_id" value="{{$jobToApply->id}}">
+                <input type="hidden" name="job_id" value="{{$jobToApply->id}}">
+
                 <div class="form-group">
                     <label>Employee Name</label>
                     <input type="text" class="form-control" value="{{Auth::user()->name}}">

@@ -40,7 +40,7 @@
 {{--<link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">--}}
 <link rel="stylesheet" href="{{asset('extra/select2/select2.min.css')}}">
 {{-- SWEET ALERT  --}}
-<link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert.css')}}">
+{{-- <link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert.css')}}"> --}}
 
 
 </head>
@@ -221,8 +221,8 @@
     <script src="{{ asset('adminpaneldesign/vendors/ladda/js/ladda.min.js') }}"></script>
     <script src="{{ asset('adminpaneldesign/js/loading-buttons.js') }}"></script>
     {{-- SWEET ALERT  --}}
-    <script src="{{asset('js/sweetalert.js')}}"></script>
-    @include('Alerts::show')
+    {{-- <script src="{{asset('js/sweetalert.js')}}"></script> --}}
+    {{-- @include('Alerts::show') --}}
     <script>
 
         function myFunction() {

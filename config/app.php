@@ -174,7 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Socieboy\Alerts\AlertServiceProvider::class,
+        // Socieboy\Alerts\AlertServiceProvider::class,
+        
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],

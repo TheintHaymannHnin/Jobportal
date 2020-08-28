@@ -21,7 +21,7 @@
 			                <a href="{{url('/category_lists')}}" class="btn btn-info mb-3 ml-3">
                               Browse By Category
                             </a>
-			                <a href="" class="btn btn-info mb-3 ml-3">
+			                <a href="{{url('/company_lists')}}" class="btn btn-info mb-3 ml-3">
                               Browse By Company
                             </a>
 			            </div>

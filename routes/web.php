@@ -26,6 +26,8 @@ Route::get('/search_jobs_by_algo','UIController@searchJobsByAlgo');
 // browse
 Route::get('/category_lists','BrowseController@categorylist');
 Route::get('/all_jobs/{categoryId}','BrowseController@allJobsIndexByCategory');
+Route::get('/company_lists','BrowseController@companylist');
+Route::get('/all_jobs/{companyId}','BrowseController@allJobsIndexByCompany');
 
 
 

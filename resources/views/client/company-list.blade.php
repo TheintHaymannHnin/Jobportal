@@ -4,18 +4,18 @@
     <div class="container p-2" style="margin-top: 80px">
         <div class="row">
             <div class="col-md-12">
-                <h5>Category List</h5>
+                <h5>Company List</h5>
 
                 <div class="row">
-                    @foreach($categories as $category)
+                    @foreach($companies as $company)
                     <div class="col-md-3">
-                        <a href="{{url('/all_jobs/'.$category->id)}}">
+                        <a href="{{url('/all_jobs/'.$company->id)}}">
                             <div class="card mb-4" style="border: 1px solid black">
                                 <div class="card-body">
-                                   {{$category->name}}
+                                   {{$company->name}}
                                 </div>
                             </div>
-                    </a>
+                        </a>
                     </div>
                     @endforeach
             </div>

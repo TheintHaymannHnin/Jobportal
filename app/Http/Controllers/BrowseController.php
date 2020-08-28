@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Category,Job, CollaborativeFiltering};
+use App\{Category,Job, CollaborativeFiltering,};
+use App\User;
 
 class BrowseController extends Controller
 {
@@ -22,6 +23,31 @@ class BrowseController extends Controller
         $modal = new Job();
         $columnNameToFilter = 'category_id';
         $targetId = $categoryId;
+
+        $jobs = $collaborativeFilteringAlgorithm->filterJobs($modal,$columnNameToFilter,$targetId);
+
+        return view('client.all-jobs',compact('jobs'));
+    }
+
+//company
+
+
+
+    public function companylist()
+    {
+        $companies = User::all();
+        return view('client.company-list',compact('companies'));
+    }
+
+    public function allJobsIndexByCompany($companyId){
+
+        
+
+        $collaborativeFilteringAlgorithm = new CollaborativeFiltering();
+
+        $modal = new Job();
+        $columnNameToFilter = 'company_id';
+        $targetId = $companyId;
 
         $jobs = $collaborativeFilteringAlgorithm->filterJobs($modal,$columnNameToFilter,$targetId);
 

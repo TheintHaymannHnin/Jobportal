@@ -11,11 +11,12 @@ class UIController extends Controller
     // algo
     public function searchJobsByAlgo()
     {
+        if(request()->job_name == ''){
+            return back();
+        }
 
         $results = Job::all();
-
         if($results->count() > 0){
-
             foreach($results as $result){
                 $target = request()->job_name;
                 $jaro = new Jaro();
@@ -37,13 +38,7 @@ class UIController extends Controller
         $jobs= Job::paginate(5);
         return view('client.index',compact('categories','locations','jobs','jobsCount'));
     }
-    public function allJobsIndex(){
-        // $categories = Category::all();
-        // $locations = User::where('role','Company')->get();
-        // $jobsCount= Job::all()->count();
-        $jobs= Job::all();
-        return view('client.all-jobs',compact('jobs'));
-    }
+
 
     // SEARCH JOBS
     public function searchJobs()
@@ -122,12 +117,10 @@ class UIController extends Controller
             ->where('company_id','=',$locationId)
             ->paginate(5);
        }
-
        // WHEN EVERYTING IS EQUAL TO NULL
        if($jobName == null && $categoryId == null && $locationId == null){
            return back();
        }
-
 
         return view('client.index',compact('categories','locations','jobs','jobsCount'));
     }

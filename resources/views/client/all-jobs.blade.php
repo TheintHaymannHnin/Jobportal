@@ -99,51 +99,58 @@
 
             <div class="row">
                 {{-- CATEGORY CLUSTER  --}}
-                <div class="col-md-4">
-                    <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="row justify-content-center mb-2">
                         <div class="col-md-7 heading-section text-center ftco-animate">
-                            <h5>Jobs by Category Cluster</h5>
+                            <h5>Jobs by Category</h5>
+                            <form action="{{url('/search_jobs_by_algo')}}" method="GET">
+                                @csrf
+                               <div class="input-group">
+                                <input type="text" name="job_name" class="form-control" placeholder="search ... ">
+                                <button type="submit" class="btn btn-primary" style="border-radius: 0px 4px 4px 0px">
+                                   <i class="fa fa-search"></i> Search Jobs
+                                </button>
+                               </div>
+                            </form>
                         </div>
                     </div>
                     <div class="row">
-                    @foreach($jobs as $job)
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
-                        <div class="mb-4 mb-md-0 mr-5">
-                            <div class="job-post-item-header d-flex align-items-center">
-                            <h5 class="mr-3 text-black">
-                                {{$job->name}}
-                            </h5>
-                            <div class="badge-wrap">
-                            <span class="bg-primary text-white badge py-2 px-3">{{$job->type->name}}</span>
-                            </div>
-                            </div>
-                            <div class="job-post-item-body d-block d-md-flex">
-                            <div class="mr-3">
-                                <span class="icon-layers"></span> <a href="#">{{$job->company->name}}</a>
+                    @if($jobs->count() >= 1)
+                        @foreach($jobs as $job)
+                        <div class="col-md-12 ftco-animate" >
+                            <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                            <div class="mb-4 mb-md-0 mr-5">
+                                <div class="job-post-item-header d-flex align-items-center">
+                                <h5 class="mr-3 text-black">
+                                    {{$job->name}}
+                                </h5>
+                                <div class="badge-wrap">
+                                <span class="bg-primary text-white badge py-2 px-3">{{$job->type->name}}</span>
                                 </div>
-                                <div>{{$job->category->name}}</div>
-                            <div><span class="icon-my_location"></span> <span>{{$job->company->address}}</span></div>
+                                </div>
+                                <div class="job-post-item-body d-block d-md-flex">
+                                <div class="mr-3">
+                                    <span class="icon-layers"></span> <a href="#">{{$job->company->name}}</a>
+                                </div>
+                                    <div class="mr-3" style="color: black">{{$job->category->name}}</div>
+                                <div>
+                                    <span style="color: black" class="icon-my_location"></span>
+                                    <span style="color: black">{{$job->company->address}}</span>
+                                </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="">
-                            <a href="{{url('/cv_form/'.$job->id)}}" class="btn btn-primary btn-sm">Apply Job</a>
-                        </div>
-                        </div>
-                  </div>
-                  @endforeach
-                </div>
-                </div>
+                            <div class="ml-auto d-flex">
+                                <a href="{{url('/cv_form/'.$job->id)}}" class="btn btn-primary">Apply Job</a>
+                            </div>
+                            </div>
+                    </div>
+                    @endforeach
+                @else
+                <p style="color: black; font-size: 20px">No job found!</p>
+                @endif
 
-                <div class="col-md-4">
-                    <form action="{{url('/search_jobs_by_algo')}}" method="GET">
-                        @csrf
-                       <div class="form-group">
-                        <input type="text" name="job_name" class="form-control">
-                       </div>
-                        <button type="submit" class="btn btn-primary">Search Jobs</button>
-                    </form>
+                </div>
                 </div>
             </div>
 

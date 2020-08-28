@@ -20,9 +20,12 @@ Route::post('/cv_form/store','UIController@storeCvForm');
 Route::get('/jobs/search','UIController@searchJobs');
 
 // Just by yms
-Route::get('/all_jobs','UIController@allJobsIndex');
 
 Route::get('/search_jobs_by_algo','UIController@searchJobsByAlgo');
+
+// browse
+Route::get('/category_lists','BrowseController@categorylist');
+Route::get('/all_jobs/{categoryId}','BrowseController@allJobsIndexByCategory');
 
 
 

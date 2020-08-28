@@ -29,19 +29,14 @@ class BrowseController extends Controller
         return view('client.all-jobs',compact('jobs'));
     }
 
-//company
-
-
-
+    //company
     public function companylist()
     {
-        $companies = User::all();
+        $companies = User::where('role','Company')->get();
         return view('client.company-list',compact('companies'));
     }
 
     public function allJobsIndexByCompany($companyId){
-
-        
 
         $collaborativeFilteringAlgorithm = new CollaborativeFiltering();
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\{Category,Job,Cv,Education,Experience,Skill, User, Jaro};
+use App\{Category,Job,Cv,Education,Experience,Skill, User, Jaro, Jarowinkler};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,7 +51,36 @@ class UIController extends Controller
         $locations = User::where('role','Company')->get();
         $jobsCount= Job::all()->count();
 
-        // dd($jobName, $categoryId, $locationId);
+        // WHEN EVERYTING IS EQUAL TO NULL
+       if($jobName == null && $categoryId == null && $locationId == null){
+            return back();
+       }
+
+        $jobName = request()->name;
+        $categoryId = request()->category_id;
+        $locationId = request()->location_id;
+
+        $categories = Category::all();
+        $locations = User::where('role','Company')->get();
+        $jobsCount= Job::all()->count();
+
+        // WHEN EVERYTING IS EQUAL TO NULL
+       if($jobName == null && $categoryId == null && $locationId == null){
+            return back();
+       }
+
+       // WHEN NOTHING IS EQUAL TO NULL
+       if($jobName != null && $categoryId != null && $locationId != null){
+
+        $Jarowinkler = new Jarowinkler();
+        $jobs = $Jarowinkler->JaroWinklerWithAllIsNotNull(new Job(),$jobName,$categoryId,$locationId);
+       }
+
+       if(request()->min_salary != null && request()->max_salary != null){
+
+            $Jarowinkler = new Jarowinkler();
+            $jobs = $Jarowinkler->JaroWinklerWithSalary(new Job(),request()->min_salary,request()->max_salary,$jobName,$categoryId,$locationId);
+       }
 
         // WHEN JOB NAME IS EQUAL TO NULL
         if($jobName == null){
@@ -109,19 +138,6 @@ class UIController extends Controller
             }
 
         }
-
-       // WHEN NOTHING IS EQUAL TO NULL
-       if($jobName != null && $categoryId != null && $locationId != null){
-            $jobs= Job::where('name','like','%'.$jobName.'%')
-            ->where('category_id','=',$categoryId)
-            ->where('company_id','=',$locationId)
-            ->paginate(5);
-       }
-       // WHEN EVERYTING IS EQUAL TO NULL
-       if($jobName == null && $categoryId == null && $locationId == null){
-           return back();
-       }
-
         return view('client.index',compact('categories','locations','jobs','jobsCount'));
     }
 

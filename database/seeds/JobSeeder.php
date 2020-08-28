@@ -19,7 +19,7 @@ class JobSeeder extends Seeder
             'requirement' => 'Must be BE-IT,Minimum 3 years of experience in PHP , Must speak English fluently',
             'description' => 'This job is very good for everyone',
             'category_id' => 1,
-            'company_id' => 1,
+            'company_id' => 5,
             'type_id' => 1,
         ]);
         Job::create([
@@ -39,7 +39,7 @@ class JobSeeder extends Seeder
             'requirement' => 'Must be BE-IT, Must speak English fluently',
             'description' => 'This job is very good for everyone',
             'category_id' => 1,
-            'company_id' => 2,
+            'company_id' => 5,
             'type_id' => 2,
         ]);
         Job::create([
@@ -49,7 +49,7 @@ class JobSeeder extends Seeder
             'requirement' => 'Must be BE-IT, Must speak English fluently',
             'description' => 'This job is very good for everyone',
             'category_id' => 1,
-            'company_id' => 1,
+            'company_id' => 6,
             'type_id' => 4,
         ]);
         Job::create([
@@ -59,7 +59,7 @@ class JobSeeder extends Seeder
             'requirement' => 'Must be BE-IT, Must speak English fluently',
             'description' => 'This job is very good for everyone',
             'category_id' => 1,
-            'company_id' => 2,
+            'company_id' => 5,
             'type_id' => 3,
         ]);
         Job::create([
@@ -69,7 +69,7 @@ class JobSeeder extends Seeder
             'requirement' => 'Good selling and communication skill, Good product and market knowledge ,Strong focused on customer relationship,Good team player',
             'description' => 'Responsible for visiting Doctors as per assigned plan,Responsible for achievement of assigned area sales target',
             'category_id' => 4,
-            'company_id' => 7,
+            'company_id' => 6,
             'type_id' => 2,
         ]);
     }

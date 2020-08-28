@@ -42,10 +42,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="Min">
+                                            <input type="text" name="min_salary" class="form-control" placeholder="Min Salary">
                                             </div>
                                             <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="Max">
+                                            <input type="text" name="max_salary" class="form-control" placeholder="Max Salary">
                                             </div>
                                         </div>
                                     </div>

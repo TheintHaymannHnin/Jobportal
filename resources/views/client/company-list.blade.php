@@ -9,7 +9,7 @@
                 <div class="row">
                     @foreach($companies as $company)
                     <div class="col-md-3">
-                        <a href="{{url('/all_jobs/'.$company->id)}}">
+                        <a href="{{url('/all_jobs_by_company/'.$company->id)}}">
                             <div class="card mb-4" style="border: 1px solid black">
                                 <div class="card-body">
                                    {{$company->name}}

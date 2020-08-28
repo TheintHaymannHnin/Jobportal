@@ -25,5 +25,9 @@ class TypeSeeder extends Seeder
             'name' => 'Internship',
             'description' => 'Internship is the working time to work or study for all day'
         ]);
+        Type::create([
+            'name' => 'Freelancer',
+            'description' => 'Freelancers are  self-employed and not necessarily committed to a particular employer long-term.'
+        ]);
     }
 }

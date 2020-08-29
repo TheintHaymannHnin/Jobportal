@@ -35,7 +35,7 @@ class UIController extends Controller
         $categories = Category::all();
         $locations = User::where('role','Company')->get();
         $jobsCount= Job::all()->count();
-        $jobs= Job::paginate(5);
+        $jobs= Job::paginate(10);
         return view('client.index',compact('categories','locations','jobs','jobsCount'));
     }
 
@@ -87,16 +87,16 @@ class UIController extends Controller
 
             if($categoryId == null){
                  $jobs= Job::where('company_id','=',$locationId)
-                ->paginate(5);
+                ->paginate(10);
             }
             if($locationId == null){
                 $jobs= Job::where('category_id','=',$categoryId)
-                ->paginate(5);
+                ->paginate(10);
             }
             if($categoryId != null && $locationId != null){
                 $jobs= Job::where('category_id','=',$categoryId)
                 ->where('company_id','=',$locationId)
-                ->paginate(5);
+                ->paginate(10);
             }
 
         }
@@ -106,16 +106,16 @@ class UIController extends Controller
 
             if($jobName == null){
                  $jobs= Job::where('company_id','=',$locationId)
-                ->paginate(5);
+                ->paginate(10);
             }
             if($locationId == null){
                 $jobs= Job::where('name','like','%'.$jobName.'%')
-                ->paginate(5);
+                ->paginate(10);
             }
             if($jobName != null && $locationId != null){
                 $jobs= Job::where('name','like','%'.$jobName.'%')
                 ->where('company_id','=',$locationId)
-                ->paginate(5);
+                ->paginate(10);
             }
 
         }
@@ -125,16 +125,16 @@ class UIController extends Controller
 
             if($jobName == null){
                  $jobs= Job::where('category_id','=',$categoryId)
-                ->paginate(5);
+                ->paginate(10);
             }
             if($categoryId == null){
                 $jobs= Job::where('name','like','%'.$jobName.'%')
-                ->paginate(5);
+                ->paginate(10);
             }
             if($jobName != null && $categoryId != null){
                 $jobs= Job::where('name','like','%'.$jobName.'%')
                 ->where('category_id','=',$categoryId)
-                ->paginate(5);
+                ->paginate(10);
             }
 
         }

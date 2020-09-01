@@ -5,13 +5,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\{Job,Category,Company,Cv,Type};
 use App\Exports\JobsExport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class JobController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','job']);
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +22,7 @@ class JobController extends Controller
     public function index()
     {
 
-        $jobs= Job::all();
+        $jobs= Job::where('company_id',Auth::user()->id)->get();
 
         return view('admins.jobs.index',compact('jobs'));
     }
@@ -114,7 +115,9 @@ class JobController extends Controller
     // ============ CV Forms ====================
 
     public function requestCVs($jobId){
-        $cvs = Cv::where('job_id',$jobId)->get();
+        $cvs = Cv::where('job_id',$jobId)
+        ->where('status','request')
+        ->get();
         return view('admins.jobs.cvs.request',compact('cvs'));
     }
 }

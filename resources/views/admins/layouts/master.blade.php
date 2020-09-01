@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="{{asset('extra/select2/select2.min.css')}}">
 {{-- SWEET ALERT  --}}
 {{-- <link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert.css')}}"> --}}
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 
 </head>
 
@@ -51,8 +51,12 @@
       <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="{{ route('admin.home') }}">
-                   Job Portal {{ ucfirst(config('multiauth.prefix')) }}
+      <a class="navbar-brand" href="{{ url('/admin/landing') }}">
+        @if(Auth::user()->role == 'Admin')
+            Job Portal Admin
+        @else
+            Company Admin
+        @endif
       </a>
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
@@ -134,38 +138,35 @@
       <div class="sidebar">
         <nav class="sidebar-nav">
           <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <i class="nav-icon icon-speedometer"></i> Dashboard
-              </a>
-            </li>
 
-              <li class="nav-item">
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin/landing')}}">
+                  <i class="nav-icon icon-speedometer"></i> Dashboard
+                </a>
+              </li>
+
+                @if(Auth::user()->role == 'Admin')
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('admin/users')}}">
+                    <i class="nav-icon icon-list"></i> User </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{ url('/admin/category') }}">
                     <i class="nav-icon icon-list"></i> Category</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/admin/type') }}">
                       <i class="nav-icon icon-list"></i> Type</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/location') }}">
-                      <i class="nav-icon icon-list"></i> Location</a>
-                  </li>
+                </li>
+                @endif
 
+               @if(Auth::user()->role == 'Company' && Auth::user()->status == 'accepted')
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('/admin/job') }}">
                     <i class="nav-icon icon-list"></i> Job</a>
                 </li>
-
-                {{-- <li class="nav-item">
-                  <a class="nav-link" href="{{ url('/admin/experience_level') }}">
-                    <i class="nav-icon icon-list"></i> Experience_level</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/cv') }}">
-                      <i class="nav-icon icon-list"></i> CV</a>
-                  </li> --}}
+                @endif
             </li>
 
             </li>
@@ -179,12 +180,9 @@
         <!-- Breadcrumb-->
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-                          <li class="breadcrumb-item">Admin</li>
-
-                          <li class="breadcrumb-item active">@yield('title')</li>
-                          <!-- Breadcrumb Menu-->
-
-                        </ol>
+            <li class="breadcrumb-item">Admin</li>
+            <li class="breadcrumb-item active">@yield('title')</li>
+        </ol>
 
         @yield('content')
       </main>

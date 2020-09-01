@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','UIController@index');
 Route::get('/about','UIController@about');
-Route::get('/cv_form/{jobId}','UIController@cvForm');
+Route::get('/cv_form/{jobId}','UIController@cvForm')->middleware('cvform');
 Route::post('/cv_form/store','UIController@storeCvForm');
 
 Route::get('/jobs/search','UIController@searchJobs');
@@ -38,11 +38,18 @@ Auth::routes();
 Route::get('/employee/register_form','EmployeeRegisterController@registerForm');
 Route::post('/employee/register','EmployeeRegisterController@register');
 
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Admin
 Route::prefix('admin')->group(function () {
+
+    Route::get('/landing','AdminController@landing');
+
+    Route::post('/inform_to_admin/{companyUserId}','AdminController@informToAdmin');
+
+    Route::post('/approve_company/{companyUserId}','AdminController@approveCompany');
+
+    Route::get('/users','AdminController@userIndex');
 
     Route::resource('/category','Admin\CategoryController');
 
@@ -51,8 +58,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/download_job_excel_sheet','Admin\JobController@downloadJobExcelSheet');
 
     Route::get('/job/{jobId}/request_cvs','Admin\JobController@requestCVs');
-
-
 
     Route::resource('/cv','Admin\CVController');
 

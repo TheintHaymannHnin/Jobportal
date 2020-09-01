@@ -14,9 +14,10 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-        <table class="table  table-bordered">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Name</th>
                     <th>Category</th>
                     <th>Company</th>
@@ -30,8 +31,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($jobs as $job)
+                @foreach($jobs as $index => $job)
                 <tr>
+                    <td>{{ $index + 1 }}</td>
                     <td>{{ $job->name }}</td>
                     <td>{{ $job->category->name }}</td>
                     <td>{{ $job->company->name }}</td>
@@ -51,13 +53,13 @@
                     </form>
                     </td>
                     <td>
-                        <a href="{{url('admin/job/'.$job->id.'/request_cvs')}}" class="btn btn-primary btn-sm mb-1">
-                            Request
+                        <a href="{{url('admin/job/'.$job->id.'/request_cvs')}}" class="btn btn-primary btn-sm mb-1" title="Actions">
+                            Requests
                          </a>
-                        <a href="" class="btn btn-success btn-sm mb-1">
+                        <a href="" class="btn btn-success btn-sm mb-1" title="Actions">
                             Accepted
                          </a>
-                        <a href="" class="btn btn-danger btn-sm">
+                        <a href="" class="btn btn-danger btn-sm mb-1" title="Actions">
                             Rejected
                          </a>
                     </td>

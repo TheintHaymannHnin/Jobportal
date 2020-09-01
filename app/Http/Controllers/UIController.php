@@ -241,8 +241,6 @@ class UIController extends Controller
             'name' => $skillName
             ]);
         }
-
-        alert()->success('Congrats!', 'You have successfully posted your CV');
         return redirect('/');
 
     }

@@ -120,4 +120,18 @@ class JobController extends Controller
         ->get();
         return view('admins.jobs.cvs.request',compact('cvs'));
     }
+
+    public function acceptedCVs($jobId){
+        $cvs = Cv::where('job_id',$jobId)
+        ->where('status','accepted')
+        ->get();
+        return view('admins.jobs.cvs.accepted',compact('cvs'));
+    }
+
+    public function rejectedCVs($jobId){
+        $cvs = Cv::where('job_id',$jobId)
+        ->where('status','rejected')
+        ->get();
+        return view('admins.jobs.cvs.rejected',compact('cvs'));
+    }
 }

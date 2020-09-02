@@ -58,6 +58,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/download_job_excel_sheet','Admin\JobController@downloadJobExcelSheet');
 
     Route::get('/job/{jobId}/request_cvs','Admin\JobController@requestCVs');
+    Route::get('/job/{jobId}/accepted_cvs','Admin\JobController@acceptedCVs');
+    Route::get('/job/{jobId}/rejected_cvs','Admin\JobController@rejectedCVs');
 
     Route::resource('/cv','Admin\CVController');
 

@@ -35,6 +35,8 @@ Route::get('/all_jobs_by_company/{companyId}','BrowseController@allJobsIndexByCo
 
 // AUTHENTICATION BY YMS
 Auth::routes();
+
+
 Route::get('/employee/register_form','EmployeeRegisterController@registerForm');
 Route::post('/employee/register','EmployeeRegisterController@register');
 
@@ -60,6 +62,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/job/{jobId}/request_cvs','Admin\JobController@requestCVs');
     Route::get('/job/{jobId}/accepted_cvs','Admin\JobController@acceptedCVs');
     Route::get('/job/{jobId}/rejected_cvs','Admin\JobController@rejectedCVs');
+
+    Route::get('/job/show_cv_form/{cvId}','Admin\JobController@showCvForm');
+    Route::post('/job/accept_cv/{cvId}','Admin\JobController@acceptCv');
+    Route::post('/job/reject_cv/{cvId}','Admin\JobController@rejectCv');
 
     Route::resource('/cv','Admin\CVController');
 

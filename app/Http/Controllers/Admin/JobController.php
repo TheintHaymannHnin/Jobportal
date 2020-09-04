@@ -114,6 +114,7 @@ class JobController extends Controller
 
     // ============ CV Forms ====================
 
+    // request cv form index
     public function requestCVs($jobId){
         $cvs = Cv::where('job_id',$jobId)
         ->where('status','request')
@@ -121,6 +122,7 @@ class JobController extends Controller
         return view('admins.jobs.cvs.request',compact('cvs'));
     }
 
+    // accepted cv form index
     public function acceptedCVs($jobId){
         $cvs = Cv::where('job_id',$jobId)
         ->where('status','accepted')
@@ -128,10 +130,38 @@ class JobController extends Controller
         return view('admins.jobs.cvs.accepted',compact('cvs'));
     }
 
+    // rejected cv form index
     public function rejectedCVs($jobId){
         $cvs = Cv::where('job_id',$jobId)
         ->where('status','rejected')
         ->get();
         return view('admins.jobs.cvs.rejected',compact('cvs'));
+    }
+
+    // show cv form index
+    public function showCvForm($cvId)
+    {
+        return view('admins.jobs.cvs.cvform',[
+            'cv' => Cv::findOrFail($cvId),
+            ]);
+    }
+
+    // accept cv form
+    public function acceptCv($cvId)
+    {
+        $cv = Cv::findOrFail($cvId);
+        $cv->update([
+            'status' => 'accepted',
+        ]);
+        return redirect('/admin/job/'.$cv->job_id.'/request_cvs');
+    }
+    // reject cv form
+    public function rejectCv($cvId)
+    {
+        $cv = Cv::findOrFail($cvId);
+        $cv->update([
+            'status' => 'rejected',
+        ]);
+        return redirect('/admin/job/'.$cv->job_id.'/request_cvs');
     }
 }

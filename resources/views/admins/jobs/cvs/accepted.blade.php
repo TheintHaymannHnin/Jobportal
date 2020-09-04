@@ -13,12 +13,18 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($cvs as $cv)
                 <tr>
                     <td>{{$cv->user->name}}</td>
+                    <td>
+                        <a href="{{url('admin/job/show_cv_form/'.$cv->id)}}" class="btn btn-info">
+                           <i class="fa fa-plus-circle"></i> View CV
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -56,10 +56,10 @@
                         <a href="{{url('admin/job/'.$job->id.'/request_cvs')}}" class="btn btn-primary btn-sm mb-1" title="Actions">
                             Requests
                          </a>
-                        <a href="" class="btn btn-success btn-sm mb-1" title="Actions">
+                        <a href="{{url('admin/job/'.$job->id.'/accepted_cvs')}}" class="btn btn-success btn-sm mb-1" title="Actions">
                             Accepted
-                         </a>
-                        <a href="" class="btn btn-danger btn-sm mb-1" title="Actions">
+                        </a>
+                        <a href="{{url('admin/job/'.$job->id.'/rejected_cvs')}}" class="btn btn-danger btn-sm mb-1" title="Actions">
                             Rejected
                          </a>
                     </td>

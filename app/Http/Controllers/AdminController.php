@@ -24,10 +24,18 @@ class AdminController extends Controller
     }
 
     // company user action
-    public function informToAdmin($companyUserId)
+    public function sendVoucherToAdmin($companyUserId)
     {
+        request()->validate([
+            'voucher' => 'required',
+        ]);
+        $voucher = request()->voucher;
+        $voucherName = uniqid().'_'.$voucher->getClientOriginalName();
+        $voucher->storeAs("voucher-images",$voucherName);
+
         User::findOrFail($companyUserId)->update([
             'status' => 'request',
+            'voucher' => $voucherName,
         ]);
         return back();
     }

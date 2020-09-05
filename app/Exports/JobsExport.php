@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Job;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -15,7 +16,7 @@ class JobsExport implements FromCollection, WithHeadings, WithMapping, ShouldAut
     */
     public function collection()
     {
-       return Job::all();
+       return Job::where('company_id',Auth::user()->id)->get();
     }
 
     public function headings(): array

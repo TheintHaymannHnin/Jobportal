@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\{Job,Category,Company,Cv,Type};
+use App\{Job,Category,Company,Cv, CvAcceptRejectInfo, Type};
 use App\Exports\JobsExport;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -106,10 +106,10 @@ class JobController extends Controller
         return redirect('/admin/job');
     }
 
-    // excel download by yemyintsoe
+    // excel download by theint
     public function downloadJobExcelSheet(){
         $date = date('d-M-Y');
-      return Excel::download(new JobsExport,$date.'_'.'job.xlsx');
+        return Excel::download(new JobsExport,$date.'_'.'job.xlsx');
     }
 
     // ============ CV Forms ====================
@@ -153,6 +153,13 @@ class JobController extends Controller
         $cv->update([
             'status' => 'accepted',
         ]);
+
+        CvAcceptRejectInfo::create([
+            'employee_id' => request()->employee_id,
+            'company_id' => Auth::user()->id,
+            'content' => request()->content,
+        ]);
+
         return redirect('/admin/job/'.$cv->job_id.'/request_cvs');
     }
     // reject cv form
@@ -161,6 +168,11 @@ class JobController extends Controller
         $cv = Cv::findOrFail($cvId);
         $cv->update([
             'status' => 'rejected',
+        ]);
+        CvAcceptRejectInfo::create([
+            'employee_id' => request()->employee_id,
+            'company_id' => Auth::user()->id,
+            'content' => request()->content,
         ]);
         return redirect('/admin/job/'.$cv->job_id.'/request_cvs');
     }

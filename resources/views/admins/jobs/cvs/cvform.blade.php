@@ -1,7 +1,7 @@
 @extends('admins.layouts.master')
 @section('title')
 <a href="" class="title-color">
-    CV
+        CV
     @if($cv->status == 'request')
         Request
     @elseif($cv->status == 'accepted')
@@ -135,29 +135,87 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <form method="POST">
-                            @csrf
                             @if($cv->status == 'accepted')
-                                <button type="submit" formaction="{{url('admin/job/reject_cv/'.$cv->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to reject?')">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#rejectModal">
                                     Reject
                                 </button>
                             @elseif($cv->status == 'rejected')
-                                <button type="submit" formaction="{{url('admin/job/accept_cv/'.$cv->id)}}" class="btn btn-success" onclick="return confirm('Are you sure you want to accept?')">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     Accept
-                                </button>
+                              </button>
                             @else
-                                <button type="submit" formaction="{{url('admin/job/accept_cv/'.$cv->id)}}" class="btn btn-success" onclick="return confirm('Are you sure you want to accept?')">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     Accept
                                 </button>
-                                <button type="submit" formaction="{{url('admin/job/reject_cv/'.$cv->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to reject?')">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#rejectModal">
                                     Reject
                                 </button>
                             @endif
-                        </form>
                     </div>
                 </div>
         </div>
         <div class="col-md-2"></div>
+
+
+            <!-- Accept Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        To: {{ $cv->user->name }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <form action="{{url('admin/job/accept_cv/'.$cv->id)}}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="text" name="employee_id" value="{{$cv->employee_id}}">
+                            <div class="form-group">
+                                <label for="">Information</label>
+                                <textarea name="content" rows="5" class="form-control" placeholder="Message ... "></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to accept!')">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+
+            <!-- Reject Modal -->
+            <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        To: {{ $cv->user->name }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <form action="{{url('admin/job/reject_cv/'.$cv->id)}}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="text" name="employee_id" value="{{$cv->employee_id}}">
+                            <div class="form-group">
+                                <label for="">Information</label>
+                                <textarea name="content" rows="5" class="form-control" placeholder="Message ... "></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to reject!')">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
     </div>
 
 @endsection

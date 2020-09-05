@@ -20,8 +20,12 @@ Route::post('/cv_form/store','UIController@storeCvForm');
 Route::get('/jobs/search','UIController@searchJobs');
 
 // Just by yms
+Route::get('/search_jobs_by_algo','BrowseController@searchJobsByAlgo');
 
-Route::get('/search_jobs_by_algo','UIController@searchJobsByAlgo');
+
+Route::get('/notis','UIController@notis');
+
+
 
 // browse
 Route::get('/category_lists','BrowseController@categorylist');
@@ -47,7 +51,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/landing','AdminController@landing');
 
-    Route::post('/inform_to_admin/{companyUserId}','AdminController@informToAdmin');
+    Route::post('/send_voucher_to_admin/{companyUserId}','AdminController@sendVoucherToAdmin');
 
     Route::post('/approve_company/{companyUserId}','AdminController@approveCompany');
 

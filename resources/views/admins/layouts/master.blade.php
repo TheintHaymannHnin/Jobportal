@@ -9,6 +9,12 @@
         visibility: hidden;
     }
 
+    .list-group .list-group-item {
+        color: black;
+    }
+    .paymentUl li {
+        margin-top: 5px;
+    }
 </style>
 
 <head>

@@ -62,7 +62,7 @@
                 </form>
             </li>
             <li class="nav-item cta mr-md-2 ml-1">
-                <a class="nav-link">
+                <a href="{{url('/notis')}}" class="nav-link">
                     <i class="fa fa-user"></i>
                     {{Auth::user()->name}}
                 </a>

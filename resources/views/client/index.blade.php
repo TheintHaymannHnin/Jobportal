@@ -1,15 +1,27 @@
 @extends('client.layouts.client')
 @section('index')
+
     <div class="hero-wrap js-fullheight" style="background-image: url('client/images/image14.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
-              <p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We have <span class="number" data-number="{{ $jobsCount }}">0</span> great job offers you deserve!</p>
 
-                    <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-                        Your Dream <br> <span>Job is Waiting</span>
-                    </h1>
+          <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
+            <a href="{{url('/notis')}}">
+                @if(Auth::check())
+                    <span style="margin-left: 1000px; font-size: 15px" class="badge badge-pill badge-danger">
+                    Message
+                    {{ $employeeNotisCount }}
+                    </span>
+                @endif
+            </a>
+
+                <p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                  We have <span class="number" data-number="{{ $jobsCount }}">0</span> great job offers you deserve!
+                </p>
+                <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                    Your Dream <br> <span>Job is Waiting</span>
+                </h1>
 
 						<div class="ftco-search">
 						<div class="row">

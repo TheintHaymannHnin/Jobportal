@@ -41,13 +41,39 @@
                                     <span class="badge badge-primary">approved</span>
                                 @endif
                                 @if($user->status == 'request')
-                                    <form action="{{url('admin/approve_company/'.$user->id)}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Are you sure you want to approve?')">
-                                            <i class="fas fa-check-circle"></i> Approve
-                                        </button>
-                                    </form>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#voucherImageModal">
+                                        View Voucher
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="voucherImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Voucher Image</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <form action="{{url('admin/approve_company/'.$user->id)}}" method="POST">
+                                                @csrf
+                                            <div class="modal-body">
+                                                <img src="{{asset('storage/voucher-images/'.$user->voucher)}}" alt="" class="img-fluid">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to approve?')">
+                                                    <i class="fas fa-check-circle"></i> Approve
+                                                </button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                        </div>
+                                    </div>
+
                                 @endif
+
+
                             </td>
                         </tr>
                         @endforeach

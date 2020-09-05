@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExperienceLevelsTable extends Migration
+class CreateCvAcceptRejectInfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateExperienceLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('experience_levels', function (Blueprint $table) {
+        Schema::create('cv_accept_reject_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('employee_id');
+            $table->integer('company_id');
+            $table->longText('content');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateExperienceLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('experience_levels');
+        Schema::dropIfExists('cv_accept_reject_infos');
     }
 }

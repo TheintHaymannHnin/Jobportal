@@ -9,7 +9,7 @@
           <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
             <a href="{{url('/notis')}}">
                 @if(Auth::check())
-                    <span style="margin-left: 1000px; font-size: 15px" class="badge badge-pill badge-danger">
+                    <span style="margin-left: 1000px;margin-bottom: 43px; font-size: 15px" class="badge badge-pill badge-danger">
                     Message
                     {{ $employeeNotisCount }}
                     </span>

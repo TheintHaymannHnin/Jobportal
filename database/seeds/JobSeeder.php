@@ -70,7 +70,7 @@ class JobSeeder extends Seeder
             'requirement' => 'Any Graduate prefer with certificate in marketing',
             'description' => 'Prepare report for monthly activites ',
             'category_id' => 2,
-            'company_id' => 14,
+            'company_id' => 11,
             'type_id' => 2,
         ]);
         Job::create([
@@ -114,7 +114,7 @@ class JobSeeder extends Seeder
             'type_id' => 2,
         ]);
         Job::create([
-            'name' => 'Laravel Web Developer',
+            'name' => 'Laravel  Developer',
             'position' => 'Senior',
             'salary' => 1000000,
             'requirement' => 'Must be BE-IT, Must speak English fluently',
@@ -266,13 +266,13 @@ class JobSeeder extends Seeder
             'type_id' => 2,
         ]);
         Job::create([
-            'name' => 'Marketing Assistant',
+            'name' => 'Marketing Manager',
             'position' => 'senior',
-            'salary' =>400000,
+            'salary' =>500000,
             'requirement' => 'Any Graduate prefer with certificate in marketing',
             'description' => 'Prepare report for monthly activites ',
             'category_id' => 2,
-            'company_id' => 10,
+            'company_id' => 11,
             'type_id' => 2,
         ]);
         Job::create([

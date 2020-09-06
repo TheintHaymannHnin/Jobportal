@@ -101,7 +101,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'role' => 'Company',
             'phone' => '0967803628',
-            'address' => 'Ayeyarwady Division',
+            'address' => 'Mandalay',
         ]);
         User::create([
             'name' => 'Azura Hotels Group',

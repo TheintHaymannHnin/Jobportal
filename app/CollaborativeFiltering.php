@@ -8,7 +8,7 @@ class CollaborativeFiltering extends Model
 {
     public function filterJobs($modal,$columnNameToFilter,$targetId)
     {
-        return $modal::where($columnNameToFilter,'=',$targetId)->get();
+        return $modal::where($columnNameToFilter,'=',$targetId)->inRandomOrder()->get();
     }
 
 }

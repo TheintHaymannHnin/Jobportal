@@ -158,7 +158,12 @@
             </div>
 
             <div class="ml-auto d-flex">
-            <a href="{{url('/cv_form/'.$job->id)}}" class="btn btn-primary py-2 mr-1">Apply Job</a>
+            <a href="{{url('/job/'.$job->id.'/detail')}}" class="btn btn-success py-2 mr-1">
+            Detail
+            </a>
+            <a href="{{url('/cv_form/'.$job->id)}}" class="btn btn-primary py-2 mr-1">
+            Apply Job
+            </a>
             </div>
         </div>
         </div><!-- end -->

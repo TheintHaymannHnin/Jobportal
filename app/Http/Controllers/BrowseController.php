@@ -73,14 +73,15 @@ class BrowseController extends Controller
             $realName = array_search(max($data), $data);
             $jaroData = $results[$realName];
 
-            $commonId = request()->table_status == 'company' ? 'company_id' : 'category_id';
+            request()->table_status == 'company' ? [$commonId ='company_id',$tableStatus='company'] : [$commonId = 'category_id',$tableStatus='category'];
+
             $searchJobs = Job::where($commonId,$targetId)
             ->where('name','like','%'.$jobName.'%')
+            ->orderBy('id','DESC')
             ->get();
 
             $job_status = "search_job";
-            $tableStatus = "search_table";
-            return view('client.all-jobs',compact('jaroData','searchJobs','job_status','tableStatus','targetId'));
+            return view('client.all-jobs',compact('searchJobs','job_status','tableStatus','targetId'));
         }
 
     }

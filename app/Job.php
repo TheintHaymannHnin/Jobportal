@@ -10,7 +10,7 @@ class Job extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category','category_id');
+        return $this->belongsTo('App\Category','category_id')->withDefault();
     }
 
     public function company()
@@ -21,6 +21,6 @@ class Job extends Model
 
     public function type()
     {
-        return $this->belongsTo('App\Type','type_id');
+        return $this->belongsTo('App\Type','type_id')->withDefault();
     }
 }

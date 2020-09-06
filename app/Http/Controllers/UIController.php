@@ -23,6 +23,13 @@ class UIController extends Controller
         return view('client.index',compact('categories','locations','jobs','jobsCount','employeeNotisCount'));
     }
 
+    // JOB DETAIL PAGE
+    public function jobDetail($jobId)
+    {
+        return view('client.job-detail',[
+            'job' => Job::findOrFail($jobId),
+        ]);
+    }
 
     // SEARCH JOBS
     public function searchJobs()

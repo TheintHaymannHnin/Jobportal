@@ -51,7 +51,13 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item"><a href="{{url('about')}}" class="nav-link" style="color: blue">About</a></li>
-              <li class="nav-item cta mr-md-2"><a href="{{url('/admin/job')}}" class="nav-link">Post a Job</a></li>
+
+            @if(Auth::check() && Auth::user()->role == 'Company')
+              <li class="nav-item cta mr-md-2"><a href="{{url('/admin/job')}}" class="nav-link">
+              Post a Job
+              </a>
+              </li>
+            @endif
 
             @if(Auth::check())
             <li class="nav-item cta">

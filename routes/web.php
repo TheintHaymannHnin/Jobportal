@@ -15,17 +15,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','UIController@index');
 Route::get('/about','UIController@about');
 Route::get('/cv_form/{jobId}','UIController@cvForm')->middleware('cvform');
+Route::get('/job/{jobId}/detail','UIController@jobDetail');
 Route::post('/cv_form/store','UIController@storeCvForm');
 
 Route::get('/jobs/search','UIController@searchJobs');
 
-// Just by yms
+// Just by theint
 Route::get('/search_jobs_by_algo','BrowseController@searchJobsByAlgo');
 
-
 Route::get('/notis','UIController@notis');
-
-
 
 // browse
 Route::get('/category_lists','BrowseController@categorylist');

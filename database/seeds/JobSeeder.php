@@ -23,14 +23,14 @@ class JobSeeder extends Seeder
             'type_id' => 1,
         ]);
         Job::create([
-            'name' => 'Java Web Developer',
+            'name' => 'PHP Web Developer',
             'position' => 'Junior',
-            'salary' => 300000,
-            'requirement' => 'Must be BE-IT,Minimum 3 years of experience in PHP , Must speak English fluently',
+            'salary' => 400000,
+            'requirement' => 'Must be BE-IT, Must speak English fluently',
             'description' => 'This job is very good for everyone',
             'category_id' => 1,
             'company_id' => 5,
-            'type_id' => 1,
+            'type_id' => 4,
         ]);
         Job::create([
             'name' => 'Project Manager (Civil) (Construction)',
@@ -41,17 +41,6 @@ class JobSeeder extends Seeder
             'category_id' => 11,
             'company_id' => 18,
             'type_id' => 2,
-        ]);
-
-        Job::create([
-            'name' => 'Python Web Developer',
-            'position' => 'Junior',
-            'salary' => 400000,
-            'requirement' => 'Must be BE-IT, Must speak English fluently',
-            'description' => 'This job is very good for everyone',
-            'category_id' => 1,
-            'company_id' => 5,
-            'type_id' => 3,
         ]);
         Job::create([
             'name' => 'Medical Marketing Officer',
@@ -114,7 +103,7 @@ class JobSeeder extends Seeder
             'type_id' => 2,
         ]);
         Job::create([
-            'name' => 'Laravel  Developer',
+            'name' => 'Laravel Developer',
             'position' => 'Senior',
             'salary' => 1000000,
             'requirement' => 'Must be BE-IT, Must speak English fluently',
@@ -133,15 +122,16 @@ class JobSeeder extends Seeder
             'company_id' =>14,
             'type_id' =>2,
         ]);
+        
         Job::create([
-            'name' => 'PHP Web Developer',
+            'name' => 'Java Web Developer',
             'position' => 'Junior',
-            'salary' => 400000,
-            'requirement' => 'Must be BE-IT, Must speak English fluently',
+            'salary' => 300000,
+            'requirement' => 'Must be BE-IT,Minimum 3 years of experience in PHP , Must speak English fluently',
             'description' => 'This job is very good for everyone',
             'category_id' => 1,
             'company_id' => 5,
-            'type_id' => 4,
+            'type_id' => 1,
         ]);
         Job::create([
             'name' => 'Graphic Designer',
@@ -294,6 +284,16 @@ class JobSeeder extends Seeder
             'category_id' => 8,
             'company_id' =>17,
             'type_id' =>2,
+        ]);
+        Job::create([
+            'name' => 'Python Web Developer',
+            'position' => 'Junior',
+            'salary' => 400000,
+            'requirement' => 'Must be BE-IT, Must speak English fluently',
+            'description' => 'This job is very good for everyone',
+            'category_id' => 1,
+            'company_id' => 5,
+            'type_id' => 3,
         ]);
     }
 }

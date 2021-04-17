@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('address')->nullable();
             $table->string('status')->nullable();
             $table->string('voucher')->nullable();
+            $table->string('approve_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

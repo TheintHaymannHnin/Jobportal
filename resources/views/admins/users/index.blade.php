@@ -21,6 +21,7 @@
                             <th>Address</th>
                             <th>Role</th>
                             <th>Status</th>
+                            <th>Approve Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -36,6 +37,7 @@
                                 <span class="badge badge-primary">{{ $user->role }}</span>
                             </td>
                             <td>{{$user->status}}</td>
+                            <td>{{$user->approve_date}}</td>
                             <td>
                                 @if($user->status == 'accepted')
                                     <span class="badge badge-primary">approved</span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -42,9 +43,12 @@ class AdminController extends Controller
 
     // admin user action
     public function approveCompany($companyUserId)
-    {
+    {  
+        // dd(Carbon::now()->addSeconds(60));
        User::findOrFail($companyUserId)->update([
            'status' => 'accepted',
+           'approve_date'=>Carbon::now()->addSeconds(60)//expired date
+           
        ]);
        return back();
     }
